@@ -20,6 +20,10 @@ const App = () => {
   const [modalImage, setModalImage] = useState(null);
   const [notFound, setNotFound] = useState(false);
 
+  const onLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
   const openModal = (image) => {
     setModalImage(image);
     setIsModalOpen(true);
@@ -88,7 +92,7 @@ const App = () => {
       )}
       {isLoading && <Loader isLoading={isLoading} />}
       {page < totalPages && !isLoading && (
-        <LoadMoreBtn page={page} setPage={setPage} />
+        <LoadMoreBtn onLoadMore={onLoadMore} />
       )}
       <ImageModal
         isOpen={isModalOpen}
